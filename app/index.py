@@ -19,14 +19,14 @@ dapp.layout = html.Div([
 def display_page(pathname):
     if pathname == '/':
         return status.layout
-    elif pathname == '/status':
-        return status.layout
-    elif pathname == '/locationAnalysis':
-        return locationAnalysis.layout
-    elif pathname == '/locationsDetail':
-        return locationsDetail.layout
-    elif pathname == '/stakeholder':
-        return stakeholder.layout
+#    elif pathname == '/status':
+#        return status.layout
+#    elif pathname == '/locationAnalysis':
+#        return locationAnalysis.layout
+#    elif pathname == '/locationsDetail':
+#        return locationsDetail.layout
+#    elif pathname == '/stakeholder':
+#        return stakeholder.layout
     else:
         return '404: Page not found'
 

@@ -15,7 +15,7 @@ from apps.elements.navbar import navbar, banner
 from apps.elements.plan import Grid, generate_dropdown_form, generate_input_form
 from apps.elements import status_components as status
 
-from .data import etl_check
+#from .data import etl_check
 
 pandas.options.display.float_format = '{:,.10f}'.format
 pandas.set_option("display.max_columns", 20)
@@ -24,8 +24,8 @@ pandas.set_option('expand_frame_repr', False)
 #################
 # Data Extraction
 #################
-etl_check_data = etl_check.etl_tracking()
-etl_check_data['LastCompletedDate'] = pandas.to_datetime(etl_check_data['LastCompletedDate'], format="%Y-%m-%d %H:%M:%S")
+#etl_check_data = etl_check.etl_tracking()
+#etl_check_data['LastCompletedDate'] = pandas.to_datetime(etl_check_data['LastCompletedDate'], format="%Y-%m-%d %H:%M:%S")
 
 
 ###################
@@ -37,11 +37,11 @@ etl_check_data['LastCompletedDate'] = pandas.to_datetime(etl_check_data['LastCom
 ##################
 
 # region DataTable for ETL Tracking
-def etl_track_div(etl_data):
-    return html.Div([
-        dbc.Table.from_dataframe(etl_data, striped=True, bordered=True, hover=True)
-    ], className='d-flex flex-row justify-content-between align-items-center')
-etl_track_row = etl_track_div(etl_check_data)
+#def etl_track_div(etl_data):
+#    return html.Div([
+#        dbc.Table.from_dataframe(etl_data, striped=True, bordered=True, hover=True)
+#    ], className='d-flex flex-row justify-content-between align-items-center')
+#etl_track_row = etl_track_div(etl_check_data)
 # endregion
 
 # region Card for Old ETL Tracking
@@ -75,7 +75,7 @@ page_grid.add_element(nav_row, 1, 1)
 page_grid.add_element(old_etl_status, 1, 2)
 page_grid.add_element(status_grid.generated_grid, 2, 1)
 
-page_grid.add_element(etl_track_row, 3, 2)
+#page_grid.add_element(etl_track_row, 3, 2)
 
 
 
@@ -96,10 +96,10 @@ def update(n_intervals):
     print('refreshed')
     status_grid = status.generate_status()
     page_grid.replace_element(status_grid.generated_grid, 2, 1)
-    etl_check_data = etl_check.etl_tracking()
-    etl_check_data['LastCompletedDate'] = pandas.to_datetime(etl_check_data['LastCompletedDate'], format="%Y-%m-%d %H:%M:%S")
-    etl_track_row = etl_track_div(etl_check_data)
-    page_grid.replace_element(etl_track_row, 3, 2)
+#    etl_check_data = etl_check.etl_tracking()
+#    etl_check_data['LastCompletedDate'] = pandas.to_datetime(etl_check_data['LastCompletedDate'], format="%Y-%m-%d %H:%M:%S")
+#    etl_track_row = etl_track_div(etl_check_data)
+#    page_grid.replace_element(etl_track_row, 3, 2)
     return [
         banner(),
         page_grid.generated_grid,
