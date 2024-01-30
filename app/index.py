@@ -6,7 +6,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 
 from app import dapp
-from apps import status, locationAnalysis, locationsDetail, stakeholder
+from apps import status
 
 dapp.layout = html.Div([
     dcc.Location(id='url', refresh=False),
@@ -19,14 +19,14 @@ dapp.layout = html.Div([
 def display_page(pathname):
     if pathname == '/':
         return status.layout
-    elif pathname == '/status':
-        return status.layout
-    elif pathname == '/locationAnalysis':
-        return locationAnalysis.layout
-    elif pathname == '/locationsDetail':
-        return locationsDetail.layout
-    elif pathname == '/stakeholder':
-        return stakeholder.layout
+#    elif pathname == '/status':
+#        return status.layout
+#    elif pathname == '/locationAnalysis':
+#        return locationAnalysis.layout
+#    elif pathname == '/locationsDetail':
+#        return locationsDetail.layout
+#    elif pathname == '/stakeholder':
+#        return stakeholder.layout
     else:
         return '404: Page not found'
 
