@@ -56,7 +56,7 @@ layout = html.Div([
         interval=600*1000, # in milliseconds
         n_intervals=0
     )
-], id='page-content')
+], id='main-layout')
 
 
 #@dapp.callback(Output("main-layout", "children"), [Input("interval-component", "n_intervals")])
