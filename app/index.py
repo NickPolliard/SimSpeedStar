@@ -6,7 +6,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 
 from app import dapp
-from apps import MatchStick
+from apps import matchstick
 from apps import ManualMatch, KnownPopulation
 from apps import page_3, HiddenPage
 
@@ -21,7 +21,9 @@ dapp.layout = html.Div([
                [Input('url', 'pathname')])
 def display_page(pathname):
     if pathname == '/':
-        return MatchStick.layout
+        return matchstick.layout
+    elif pathname == '/dashboard':
+        return matchstick.layout
     elif pathname == '/manualMatch':
         return ManualMatch.layout
     elif pathname == '/knownPopulation':

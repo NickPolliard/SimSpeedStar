@@ -12,49 +12,17 @@ import time
 
 from app import dapp
 from apps.elements.navbar import navbar, banner
-from apps.elements.plan import Grid, generate_dropdown_form, generate_input_form
-from apps.elements import status_components as status
+from apps.elements.plan import Grid
 
-#from .data import etl_check
 
 pandas.options.display.float_format = '{:,.10f}'.format
 pandas.set_option("display.max_columns", 20)
 pandas.set_option('expand_frame_repr', False)
 
-#################
-# Data Extraction
-#################
-#etl_check_data = etl_check.etl_tracking()
-#etl_check_data['LastCompletedDate'] = pandas.to_datetime(etl_check_data['LastCompletedDate'], format="%Y-%m-%d %H:%M:%S")
-
-
-###################
-# Data Manipulation
-###################
 
 ##################
 # Dashboard Layout
 ##################
-
-# region DataTable for ETL Tracking
-#def etl_track_div(etl_data):
-#    return html.Div([
-#        dbc.Table.from_dataframe(etl_data, striped=True, bordered=True, hover=True)
-#    ], className='d-flex flex-row justify-content-between align-items-center')
-#etl_track_row = etl_track_div(etl_check_data)
-# endregion
-
-# region Card for Old ETL Tracking
-
-
-#endregion
-
-
-#region Drop Down to select by location Sales Metrics
-# from bigquery and mongo
-
-
-#endregion
 
 
 # Page Grid object generation
@@ -65,7 +33,7 @@ page_grid = Grid(rows=4,cols=4, specs=[[{'width': 10}, {'width': 2}, None, None]
 
 # region Row for nav and continue button
 nav_row = html.Div([
-    navbar('status')
+    navbar()
 ], className='d-flex flex-row justify-content-between align-items-center')
 # endregion
 
@@ -88,7 +56,7 @@ layout = html.Div([
         interval=600*1000, # in milliseconds
         n_intervals=0
     )
-], id='main-layout')
+], id='page-content')
 
 
 #@dapp.callback(Output("main-layout", "children"), [Input("interval-component", "n_intervals")])
