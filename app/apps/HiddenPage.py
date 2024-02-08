@@ -4,7 +4,7 @@ import dash_html_components as html
 import pandas
 
 from app import dapp
-from apps.elements.navbar import navbar, banner
+from apps.elements.hidden_navbar import navbar, banner
 from apps.elements.plan import Grid
 
 
