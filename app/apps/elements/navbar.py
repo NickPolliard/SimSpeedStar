@@ -6,7 +6,7 @@ from app import dapp
 
 def banner():
     banner = dbc.Nav([
-        html.Div(html.Img(src=dapp.get_asset_url("Flowhub_Logo_Icon.svg"), style={'height': '1.5rem'}),
+        html.Div(html.Img(src=dapp.get_asset_url("beta_logo.png"), style={'height': '1.5rem'}),
                  className='ml-2 mr-4 py-1'),
         html.Div(['Matchstick Pro Max X Dashboard'], className='p-2'),
     ], className='banner p-2')
