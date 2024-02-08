@@ -8,16 +8,16 @@ def banner():
     banner = dbc.Nav([
         html.Div(html.Img(src=dapp.get_asset_url("beta_logo.png"), style={'height': '1.5rem'}),
                  className='ml-2 mr-4 py-1'),
-        html.Div(['Matchstick Pro Max X'], className='p-2'),
+        html.Div(['This is a Hidden Page'], className='p-2'),
     ], className='banner p-2')
     return banner
 
 
 def navbar():
+
     navbar = dbc.Nav([
         dbc.NavItem(dbc.NavLink("Home", active=True, href="/MatchStick", className='px-2')),
-        dbc.NavItem(dbc.NavLink("Manual Match", active=True, href="/ManualMatch", className='px-2')),
-        dbc.NavItem(dbc.NavLink("Known Population", active=True, href="/KnownPopulation", className='px-2')), 
-        dbc.NavItem(dbc.NavLink("Page 3", active=True, href="/page_3", className='px-2')), 
+
+
     ])
     return navbar

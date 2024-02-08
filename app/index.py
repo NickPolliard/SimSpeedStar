@@ -22,13 +22,15 @@ dapp.layout = html.Div([
 def display_page(pathname):
     if pathname == '/':
         return MatchStick.layout
-    elif pathname == '/manualMatch':
+    elif pathname == '/MatchStick':
+        return MatchStick.layout
+    elif pathname == '/ManualMatch':
         return ManualMatch.layout
-    elif pathname == '/knownPopulation':
+    elif pathname == '/KnownPopulation':
         return KnownPopulation.layout
     elif pathname == '/page_3':
         return page_3.layout
-    elif pathname == '/hiddenPage':
+    elif pathname == '/HiddenPage':
         return HiddenPage.layout
     else:
         return '404: Page not found'
