@@ -6,7 +6,9 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 
 from app import dapp
-from apps import status
+from apps import MatchStick
+from apps import ManualMatch, KnownPopulation
+from apps import page_3, HiddenPage
 
 dapp.layout = html.Div([
     dcc.Location(id='url', refresh=False),
@@ -14,23 +16,25 @@ dapp.layout = html.Div([
 ])
 
 
+# UI Page content routes
 @dapp.callback(Output('page-content', 'children'),
                [Input('url', 'pathname')])
 def display_page(pathname):
     if pathname == '/':
-        return status.layout
-#    elif pathname == '/status':
-#        return status.layout
-#    elif pathname == '/locationAnalysis':
-#        return locationAnalysis.layout
-#    elif pathname == '/locationsDetail':
-#        return locationsDetail.layout
-#    elif pathname == '/stakeholder':
-#        return stakeholder.layout
+        return MatchStick.layout
+    elif pathname == '/manualMatch':
+        return ManualMatch.layout
+    elif pathname == '/knownPopulation':
+        return KnownPopulation.layout
+    elif pathname == '/page_3':
+        return page_3.layout
+    elif pathname == '/hiddenPage':
+        return HiddenPage.layout
     else:
         return '404: Page not found'
 
 
+# Traditional API routes
 @dapp.server.route("/ping")
 def ping():
     return "{status: ok}"

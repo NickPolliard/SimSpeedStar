@@ -8,22 +8,16 @@ def banner():
     banner = dbc.Nav([
         html.Div(html.Img(src=dapp.get_asset_url("Flowhub_Logo_Icon.svg"), style={'height': '1.5rem'}),
                  className='ml-2 mr-4 py-1'),
-        html.Div(['Data Monitoring Dashboard'], className='p-2'),
+        html.Div(['MatchStick Pro Max X Dashboard'], className='p-2'),
     ], className='banner p-2')
     return banner
 
 
 def navbar(current_page):
-    if 'mapping' in current_page:
-        mapping_disabled = False
-        mapping_active = True
-    else:
-        mapping_disabled = True
-        mapping_active = False
     navbar = dbc.Nav([
-        dbc.NavItem(dbc.NavLink("Status Page", active=True, href="/status", className='px-2')),
-        dbc.NavItem(dbc.NavLink("Location Analysis", active=True, href="/locationAnalysis", className='px-2')),
-        dbc.NavItem(dbc.NavLink("Collection Detail", active=True, href="/locationsDetail", className='px-2')),
-
+        dbc.NavItem(dbc.NavLink("Dashboard", active=True, href="/", className='px-2')),
+        dbc.NavItem(dbc.NavLink("Manual Match", active=True, href="/manualMatch", className='px-2')),
+        dbc.NavItem(dbc.NavLink("Known Population", active=True, href="/knownPopulation", className='px-2')), 
+        dbc.NavItem(dbc.NavLink("Page 3", active=True, href="/page_3", className='px-2')), 
     ])
     return navbar
