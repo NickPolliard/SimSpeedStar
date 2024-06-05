@@ -1,0 +1,4 @@
+FROM python:3.11.1
+
+ENV FLASK_ENV="docker"
+EXPOSE 8050
