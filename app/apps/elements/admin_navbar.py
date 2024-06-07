@@ -16,7 +16,7 @@ def banner():
 def navbar():
 
     navbar = dbc.Nav([
-        dbc.NavItem(dbc.NavLink("Home", active=True, href="/MatchStick", className='px-2')),
+        dbc.NavItem(dbc.NavLink("Watch Latest Video", active=True, href="/SimSpeedStar", className='px-2')),
 
 
     ])

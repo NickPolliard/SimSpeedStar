@@ -3,3 +3,7 @@ pandas
 dash-bootstrap-components
 dash-daq
 pytest
+dash-player
+beautifulsoup4
+requests
+lxml

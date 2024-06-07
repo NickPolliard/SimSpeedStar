@@ -6,9 +6,8 @@ import dash_html_components as html
 from dash.dependencies import Input, Output
 
 from app import dapp
-from apps import MatchStick
-from apps import ManualMatch, KnownPopulation
-from apps import page_3, HiddenPage
+from apps import SimSpeedStar
+from apps import AdminPage
 
 dapp.layout = html.Div([
     dcc.Location(id='url', refresh=False),
@@ -21,17 +20,11 @@ dapp.layout = html.Div([
                [Input('url', 'pathname')])
 def display_page(pathname):
     if pathname == '/':
-        return MatchStick.layout
-    elif pathname == '/MatchStick':
-        return MatchStick.layout
-    elif pathname == '/ManualMatch':
-        return ManualMatch.layout
-    elif pathname == '/KnownPopulation':
-        return KnownPopulation.layout
-    elif pathname == '/page_3':
-        return page_3.layout
-    elif pathname == '/HiddenPage':
-        return HiddenPage.layout
+        return SimSpeedStar.layout
+    elif pathname == '/SimSpeedStar':
+        return SimSpeedStar.layout
+    elif pathname == '/Admin':
+        return AdminPage.layout
     else:
         return '404: Page not found'
 
