@@ -1,5 +1,6 @@
 import dash
 import dash_daq as daq
+import dash_player
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_bootstrap_components as dbc
@@ -7,8 +8,10 @@ import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output, State
 from dash.exceptions import PreventUpdate
 
-import pandas
 import time
+import pandas
+import requests
+from bs4 import BeautifulSoup
 
 from app import dapp
 from apps.elements.navbar import navbar, banner
@@ -19,6 +22,13 @@ pandas.options.display.float_format = '{:,.10f}'.format
 pandas.set_option("display.max_columns", 20)
 pandas.set_option('expand_frame_repr', False)
 
+youtube_rss = 'https://www.youtube.com/feeds/videos.xml?channel_id=UCME2fWXqvP_4vyDCIwCv0hQ'
+
+url = requests.get(youtube_rss)
+
+soup = BeautifulSoup(url.content, 'xml')
+entries = soup.find_all('entry')
+
 
 ##################
 # Dashboard Layout
@@ -26,9 +36,8 @@ pandas.set_option('expand_frame_repr', False)
 
 
 # Page Grid object generation
-page_grid = Grid(rows=4,cols=4, specs=[[{'width': 10}, {'width': 2}, None, None], [{'width': 12}, None, None, None],
-                                       [{'width': 0}, {'width': 12}, {'width': 0}, {'width': 0}], [{}, None, None, None]],
-                 row_kwargs=[{'className': 'p-2'}, {'className': 'p-2'}, {'className': 'pt-5', 'align': 'center'}, {'className': 'p-2'}],
+page_grid = Grid(rows=2,cols=4, specs=[[{'width': 10}, {'width': 2}, None, None], [{'width': 12}, None, None, None]],
+                 row_kwargs=[{'className': 'p-2'}, {'className': 'p-2'}],
                  div_class_name='page-grid')
 
 # region Row for nav and continue button
@@ -37,9 +46,21 @@ nav_row = html.Div([
 ], className='d-flex flex-row justify-content-between align-items-center')
 # endregion
 
+title = entries[0].title.text
+link = entries[0].link['href']
+
+player_row = html.Div([dash_player.DashPlayer(
+                            id="player",
+                            url=link,
+                            controls=True,
+                            width="100%",
+                            height="500px",
+                        )])
+
 #status_grid = status.generate_status()
 #old_etl_status = status.old_etl_status()
 page_grid.add_element(nav_row, 1, 1)
+page_grid.add_element(player_row, 2, 1)
 #page_grid.add_element(old_etl_status, 1, 2)
 #page_grid.add_element(status_grid.generated_grid, 2, 1)
 
